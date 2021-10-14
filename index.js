@@ -6,8 +6,8 @@ const app = express();
 require("./dbConfig/dbConfig").connect();
 const multer = require("multer");
 app.use(cors());
-app.use(express.json());
-app.use(express.urlencoded({ extended: false }));
+app.use(express.json({ limit: "50mb" }));
+app.use(express.urlencoded({ limit: "50mb", extended: true }));
 app.use(express.static(__dirname + "./public/"));
 
 const storage = multer.diskStorage({
